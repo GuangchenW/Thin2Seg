@@ -1,0 +1,31 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[[source]]
+url = "https://download.pytorch.org/whl/cu130"
+verify_ssl = true
+name = "pytorch"
+
+[packages]
+numpy = "*"
+scipy = "*"
+matplotlib = "*"
+ptufile = "*"
+tifffile = "*"
+phasorpy = "*"
+torch = {version = "*", index = "pytorch"}
+torchvision = {version = "*", index = "pytorch"}
+torchsummary = "*"
+liffile = "*"
+scikit-image = "*"
+wakepy = "*"
+shapely = "*"
+pyyaml = "*"
+cellpose = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
