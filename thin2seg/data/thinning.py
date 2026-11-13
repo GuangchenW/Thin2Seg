@@ -37,7 +37,7 @@ def disjoint(counts: np.ndarray, fracs: list[float], rng: np.random.Generator) -
         raise ValueError(f"photon split fractions sum to {sum(fracs)} > 1")
     rem, left, out = counts, 1.0, []
     for j, f in enumerate(fracs):
-        if j == len(fracs) - 1:
+        if j == len(fracs) - 1 and abs(sum(fracs) - 1.0) < 1e-9:
             part = rem
         else:
             part = rng.binomial(rem, min(f / left, 1.0))

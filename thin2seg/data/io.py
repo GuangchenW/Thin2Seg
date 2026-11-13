@@ -53,7 +53,8 @@ def _signal_from_ptu(path: Path, channel: int, max_bins: int):
     if k == 1:
         return signal_from_ptu(path, frame=-1, channel=channel)
     else:
-        return signal_from_ptu(path, frame=-1, channel=channel, dtime=None, selection=(..., slice(0, n, k)))
+        return signal_from_ptu(path, frame=-1, channel=channel, dtime=None, dtype=np.uint32,
+                               selection=(..., slice(0, n, k)))
 
 
 def read_histogram(path: str|Path, channel: int = 0, max_bins: int = DEFAULT_MAX_BINS) -> np.ndarray:
