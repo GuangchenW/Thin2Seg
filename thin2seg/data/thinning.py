@@ -65,9 +65,9 @@ def training_copy(counts: np.ndarray, budget, ref: float | None, key, noise: str
     if noise == "gaussian":
         level = r * (ref if ref is not None else float(np.median(counts[counts > 0])))
         rng = rng_for(*key, tag, "train_gauss")
-        return (
-            counts.astype(np.float32) * r + rng.normal(0.0, np.sqrt(level), counts.shape).astype(np.float32)
-        )
+        out = counts.astype(np.float32) * r + rng.normal(0.0, np.sqrt(level), counts.shape).astype(np.float32)
+        np.maximum(out, 0.0, out=out)
+        return out
     return disjoint(counts, [r], rng_for(*key, tag, "train"))[0]
 
 
